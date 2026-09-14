@@ -1,0 +1,547 @@
+/* =========================================
+   VIDEOS
+========================================= */
+
+.videos-container {
+
+    width: min(1050px, 92%);
+
+    margin: auto;
+
+    padding: 60px 0 100px;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.videos-header {
+
+    max-width: 760px;
+
+    margin: 30px auto 70px;
+
+    text-align: center;
+
+}
+
+
+.videos-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.03);
+
+    color: #ff4d67;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.videos-header h1 {
+
+    margin-top: 25px;
+
+    font-size: clamp(48px, 8vw, 80px);
+
+    line-height: .9;
+
+    letter-spacing: -5px;
+
+}
+
+
+.videos-header h1 span {
+
+    display: block;
+
+    color: transparent;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4d67,
+            #fb7185
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+}
+
+
+.videos-header p {
+
+    max-width: 650px;
+
+    margin: 25px auto 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================
+   VIDEO CARD
+========================================= */
+
+.video-card {
+
+    display: grid;
+
+    grid-template-columns: 310px 1fr;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
+
+    transition: .35s;
+
+}
+
+
+.video-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255,77,103,.3);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.25);
+
+}
+
+
+/* =========================================
+   PREVIEW
+========================================= */
+
+.video-preview {
+
+    position: relative;
+
+    min-height: 230px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #101827,
+            #182333
+        );
+
+}
+
+
+.preview-02 {
+
+    background:
+        linear-gradient(
+            135deg,
+            #15121e,
+            #261622
+        );
+
+}
+
+
+.preview-03 {
+
+    background:
+        linear-gradient(
+            135deg,
+            #101b1c,
+            #142a29
+        );
+
+}
+
+
+.preview-04 {
+
+    background:
+        linear-gradient(
+            135deg,
+            #191719,
+            #291b20
+        );
+
+}
+
+
+.video-preview::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,77,103,.08);
+
+    filter: blur(5px);
+
+}
+
+
+.youtube-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 70px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #ff0033;
+
+    color: white;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 15px 45px rgba(255,0,51,.25);
+
+    transition: .3s;
+
+}
+
+
+.video-card:hover .youtube-icon {
+
+    transform: scale(1.1);
+
+}
+
+
+.source-number {
+
+    position: absolute;
+
+    top: 15px;
+
+    left: 15px;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(0,0,0,.4);
+
+    border: 1px solid
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.video-info {
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.video-category {
+
+    color: #ff647a;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+}
+
+
+.video-info h2 {
+
+    margin-top: 9px;
+
+    font-size: 22px;
+
+    letter-spacing: -.5px;
+
+    line-height: 1.25;
+
+}
+
+
+.video-info p {
+
+    max-width: 650px;
+
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+.video-source {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 15px;
+
+    color: #8993a5;
+
+    font-size: 10px;
+
+}
+
+
+.video-source i {
+
+    color: #ff647a;
+
+}
+
+
+/* =========================================
+   BOTÓN
+========================================= */
+
+.watch-button {
+
+    width: fit-content;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    padding: 11px 16px;
+
+    border-radius: 10px;
+
+    background: rgba(255,0,51,.08);
+
+    border: 1px solid
+        rgba(255,77,103,.2);
+
+    color: white;
+
+    font-size: 10px;
+
+    transition: .3s;
+
+}
+
+
+.watch-button:hover {
+
+    background: #ff0033;
+
+    border-color: #ff0033;
+
+    transform: translateY(-2px);
+
+}
+
+
+.watch-button i:last-child {
+
+    font-size: 8px;
+
+}
+
+
+.watch-button.disabled {
+
+    opacity: .4;
+
+    cursor: default;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================
+   NOTA
+========================================= */
+
+.sources-note {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    padding: 22px;
+
+    border-radius: 17px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.025);
+
+}
+
+
+.note-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: rgba(56,189,248,.07);
+
+    color: var(--primary);
+
+}
+
+
+.sources-note span {
+
+    color: var(--primary);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.sources-note p {
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 750px) {
+
+    .video-card {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .video-preview {
+
+        min-height: 190px;
+
+    }
+
+
+    .video-info {
+
+        padding: 24px;
+
+    }
+
+
+    .watch-button {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+}

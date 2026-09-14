@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Desafío de la Descolonización | Museo Digital</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- CSS del juego -->
+    <link rel="stylesheet" href="../css/juego.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         FONDO / PARTICULAS
+    ========================================== -->
+
+    <div id="particles"></div>
+
+
+    <!-- =========================================
+         CABECERA
+    ========================================== -->
+
+    <header class="game-header">
+
+        <a href="../index.html" class="game-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Volver al museo</span>
+        </a>
+
+        <div class="game-brand">
+            <span class="game-brand-small">
+                MUSEO DIGITAL
+            </span>
+
+            <h1>
+                DESAFÍO DE LA
+                <span>DESCOLONIZACIÓN</span>
+            </h1>
+        </div>
+
+        <button id="soundToggle" class="sound-button" aria-label="Activar o desactivar sonido">
+            <i class="fa-solid fa-volume-high"></i>
+        </button>
+
+    </header>
+
+
+    <!-- =========================================
+         HUD
+    ========================================== -->
+
+    <section class="game-hud">
+
+        <div class="hud-item">
+            <span class="hud-label">PUNTOS</span>
+            <strong id="score">0000</strong>
+        </div>
+
+        <div class="hud-item">
+            <span class="hud-label">RACHA</span>
+            <strong>
+                🔥 <span id="streak">0</span>
+            </strong>
+        </div>
+
+        <div class="hud-item">
+            <span class="hud-label">VIDAS</span>
+            <strong id="lives">❤️❤️❤️</strong>
+        </div>
+
+        <div class="hud-item hud-progress">
+
+            <div class="progress-top">
+                <span class="hud-label">PROGRESO</span>
+                <span id="progressText">0 / 5</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PANTALLA DE INICIO
+    ========================================== -->
+
+    <main id="startScreen" class="screen active">
+
+        <div class="hero-game">
+
+            <div class="hero-icon">
+                <i class="fa-solid fa-compass"></i>
+            </div>
+
+            <span class="eyebrow">
+                MISIÓN EDUCATIVA
+            </span>
+
+            <h2>
+                ¿Estás listo para
+                <span>descolonizar</span>
+                tu forma de pensar?
+            </h2>
+
+            <p>
+                Supera cinco desafíos diferentes relacionados con
+                la descolonización, la educación, los saberes locales
+                y el Modelo Educativo Sociocomunitario Productivo.
+            </p>
+
+            <div class="game-features">
+
+                <div>
+                    <i class="fa-solid fa-dice"></i>
+                    <span>5 desafíos</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>500 puntos</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-fire"></i>
+                    <span>Rachas</span>
+                </div>
+
+            </div>
+
+            <button id="startButton" class="main-button">
+                <span>Comenzar misión</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         JUEGO
+    ========================================== -->
+
+    <main id="gameScreen" class="screen">
+
+        <!-- Indicador de desafío -->
+
+        <div class="challenge-indicator">
+
+            <div class="challenge-number">
+                <span id="challengeNumber">01</span>
+            </div>
+
+            <div>
+                <span class="challenge-label">
+                    DESAFÍO
+                </span>
+
+                <h2 id="challengeTitle">
+                    Ruleta del saber
+                </h2>
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             DESAFÍO 1 — RULETA
+        ====================================== -->
+
+        <section id="challenge1" class="challenge-panel active">
+
+            <div class="challenge-intro">
+
+                <span class="mini-tag">
+                    DESAFÍO 01 · AZAR
+                </span>
+
+                <h3>
+                    🎡 Ruleta del saber
+                </h3>
+
+                <p>
+                    Gira la ruleta y descubre qué aspecto de la
+                    descolonización tendrás que resolver.
+                </p>
+
+            </div>
+
+            <div class="roulette-area">
+
+                <div class="roulette-pointer">
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+
+                <div id="roulette" class="roulette">
+
+                    <div class="roulette-center">
+                        <span>GIRO</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="rouletteResult" class="roulette-result">
+                Gira la ruleta para comenzar
+            </div>
+
+            <button id="spinButton" class="main-button">
+                <i class="fa-solid fa-rotate"></i>
+                <span>Girar ruleta</span>
+            </button>
+
+            <div id="rouletteQuestion" class="roulette-question hidden">
+
+                <span class="question-category">
+                    DESAFÍO DESBLOQUEADO
+                </span>
+
+                <h3 id="rouletteQuestionText"></h3>
+
+                <div id="rouletteAnswers" class="answers"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             DESAFÍO 2 — VERDADERO / FALSO
+        ====================================== -->
+
+        <section id="challenge2" class="challenge-panel">
+
+            <div class="challenge-intro">
+
+                <span class="mini-tag">
+                    DESAFÍO 02 · VELOCIDAD
+                </span>
+
+                <h3>
+                    ⚡ ¿Verdadero o falso?
+                </h3>
+
+                <p>
+                    Lee cada afirmación y decide si representa
+                    correctamente un principio de la educación
+                    descolonizadora.
+                </p>
+
+            </div>
+
+            <div class="statement-card">
+
+                <span class="statement-number" id="tfNumber">
+                    AFIRMACIÓN 01
+                </span>
+
+                <h3 id="tfStatement">
+                    La educación descolonizadora busca valorar
+                    los saberes y conocimientos propios.
+                </h3>
+
+            </div>
+
+            <div class="tf-buttons">
+
+                <button class="tf-button true" data-answer="true">
+                    <span class="tf-symbol">✓</span>
+                    <span>Verdadero</span>
+                </button>
+
+                <button class="tf-button false" data-answer="false">
+                    <span class="tf-symbol">×</span>
+                    <span>Falso</span>
+                </button>
+
+            </div>
+
+            <div id="tfFeedback" class="feedback hidden"></div>
+
+            <button id="nextTF" class="secondary-button hidden">
+                Siguiente
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             DESAFÍO 3 — CONECTAR
+        ====================================== -->
+
+        <section id="challenge3" class="challenge-panel">
+
+            <div class="challenge-intro">
+
+                <span class="mini-tag">
+                    DESAFÍO 03 · CONEXIONES
+                </span>
+
+                <h3>
+                    🔗 Conecta los conceptos
+                </h3>
+
+                <p>
+                    Arrastra cada concepto hacia su significado correcto.
+                    En celular también puedes tocar primero un concepto
+                    y después su pareja.
+                </p>
+
+            </div>
+
+            <div class="matching-board">
+
+                <div class="matching-column">
+
+                    <span class="column-title">
+                        CONCEPTOS
+                    </span>
+
+                    <div id="conceptsList"></div>
+
+                </div>
+
+                <div class="connection-symbol">
+                    <i class="fa-solid fa-link"></i>
+                </div>
+
+                <div class="matching-column">
+
+                    <span class="column-title">
+                        SIGNIFICADOS
+                    </span>
+
+                    <div id="definitionsList"></div>
+
+                </div>
+
+            </div>
+
+            <div id="matchFeedback" class="feedback hidden"></div>
+
+            <button id="finishMatching" class="main-button hidden">
+                Continuar
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             DESAFÍO 4 — DETECTAR IDEA COLONIAL
+        ====================================== -->
+
+        <section id="challenge4" class="challenge-panel">
+
+            <div class="challenge-intro">
+
+                <span class="mini-tag">
+                    DESAFÍO 04 · DETECCIÓN
+                </span>
+
+                <h3>
+                    🔎 Detecta la idea colonial
+                </h3>
+
+                <p>
+                    Observa las situaciones y selecciona aquella
+                    que contradice una educación descolonizadora.
+                </p>
+
+            </div>
+
+            <div id="colonialScenarios" class="scenario-grid"></div>
+
+            <div id="colonialFeedback" class="feedback hidden"></div>
+
+            <button id="nextColonial" class="secondary-button hidden">
+                Continuar
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             DESAFÍO 5 — CONSTRUIR ESCUELA
+        ====================================== -->
+
+        <section id="challenge5" class="challenge-panel">
+
+            <div class="challenge-intro">
+
+                <span class="mini-tag">
+                    DESAFÍO 05 · MISIÓN FINAL
+                </span>
+
+                <h3>
+                    🏫 Construye una escuela descolonizadora
+                </h3>
+
+                <p>
+                    Selecciona los elementos que deberían formar parte
+                    de una educación descolonizadora.
+                </p>
+
+            </div>
+
+            <div class="school-layout">
+
+                <div class="school-preview">
+
+                    <div class="school-roof">
+                        <span>MI ESCUELA</span>
+                    </div>
+
+                    <div class="school-building">
+
+                        <div class="school-window"></div>
+                        <div class="school-door"></div>
+
+                    </div>
+
+                    <div id="schoolElements" class="selected-elements">
+                        <span>Selecciona elementos...</span>
+                    </div>
+
+                </div>
+
+                <div class="element-selector">
+
+                    <span class="column-title">
+                        ELEMENTOS DISPONIBLES
+                    </span>
+
+                    <div id="schoolOptions" class="school-options"></div>
+
+                </div>
+
+            </div>
+
+            <button id="finishSchool" class="main-button">
+                Evaluar mi escuela
+                <i class="fa-solid fa-building-columns"></i>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         PANTALLA FINAL
+    ========================================== -->
+
+    <main id="finalScreen" class="screen">
+
+        <div class="final-card">
+
+            <div class="final-trophy">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span class="eyebrow">
+                MISIÓN COMPLETADA
+            </span>
+
+            <h2>
+                Has terminado el desafío
+            </h2>
+
+            <p id="finalMessage">
+                Tu recorrido por la descolonización ha terminado.
+            </p>
+
+            <div class="final-score">
+
+                <span>PUNTUACIÓN FINAL</span>
+
+                <strong id="finalScore">
+                    0000
+                </strong>
+
+            </div>
+
+            <div class="rank-card">
+
+                <span>
+                    TU RANGO
+                </span>
+
+                <strong id="finalRank">
+                    GUARDIÁN DEL SABER
+                </strong>
+
+            </div>
+
+            <div class="final-stats">
+
+                <div>
+                    <strong id="finalCorrect">
+                        0
+                    </strong>
+
+                    <span>aciertos</span>
+                </div>
+
+                <div>
+                    <strong id="finalStreak">
+                        0
+                    </strong>
+
+                    <span>racha máxima</span>
+                </div>
+
+                <div>
+                    <strong>
+                        5
+                    </strong>
+
+                    <span>desafíos</span>
+                </div>
+
+            </div>
+
+            <div class="final-actions">
+
+                <button id="restartButton" class="main-button">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    Volver a jugar
+                </button>
+
+                <a href="../index.html" class="secondary-button">
+                    <i class="fa-solid fa-house"></i>
+                    Volver al museo
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         MENSAJE FLOTANTE
+    ========================================== -->
+
+    <div id="toast" class="toast"></div>
+
+
+    <script src="../js/juego.js"></script>
+
+</body>
+</html>
