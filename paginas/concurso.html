@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurso 1 VS 1 | Museo Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/concurso.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- =========================================
+     FONDO
+========================================= -->
+
+<div class="contest-background">
+    <div class="bg-grid"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+</div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="contest-header">
+
+    <a href="juego.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Volver</span>
+    </a>
+
+    <div class="contest-brand">
+        <span>MUSEO DIGITAL</span>
+        <strong>CONCURSO 1 VS 1</strong>
+    </div>
+
+    <button id="musicButton" class="music-button" title="Activar o silenciar música">
+        <i class="fa-solid fa-volume-high"></i>
+    </button>
+
+</header>
+
+
+<!-- =========================================
+     CONTENEDOR PRINCIPAL
+========================================= -->
+
+<main class="contest-container">
+
+
+    <!-- =====================================
+         PANTALLA DE INICIO
+    ====================================== -->
+
+    <section id="setupScreen" class="contest-screen active">
+
+        <div class="setup-card">
+
+            <div class="contest-trophy">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span class="eyebrow">
+                MODO COMPETENCIA
+            </span>
+
+            <h1>
+                CONCURSO
+                <span>1 VS 1</span>
+            </h1>
+
+            <p class="setup-description">
+                Demuestra cuánto sabes sobre la descolonización,
+                compite contra otro jugador y consigue la mayor
+                cantidad de puntos.
+            </p>
+
+
+            <!-- JUGADORES -->
+
+            <div class="players-setup">
+
+                <div class="player-input player-one">
+
+                    <div class="player-number">
+                        01
+                    </div>
+
+                    <div class="input-content">
+
+                        <label for="player1">
+                            JUGADOR 1
+                        </label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="player1"
+                                maxlength="18"
+                                placeholder="Escribe tu nombre"
+                                autocomplete="off"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="versus">
+                    <span>VS</span>
+                </div>
+
+
+                <div class="player-input player-two">
+
+                    <div class="player-number">
+                        02
+                    </div>
+
+                    <div class="input-content">
+
+                        <label for="player2">
+                            JUGADOR 2
+                        </label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="player2"
+                                maxlength="18"
+                                placeholder="Escribe tu nombre"
+                                autocomplete="off"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGLAS -->
+
+            <div class="rules-box">
+
+                <div class="rule">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>
+                        <strong>5 rondas</strong>
+                        <span>2 preguntas por sección</span>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <i class="fa-solid fa-dice"></i>
+                    <div>
+                        <strong>Preguntas aleatorias</strong>
+                        <span>Cada partida es diferente</span>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <i class="fa-solid fa-star"></i>
+                    <div>
+                        <strong>100 puntos</strong>
+                        <span>Máximo por jugador</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <button id="startContest" class="start-contest-button">
+
+                <span>COMENZAR CONCURSO</span>
+
+                <i class="fa-solid fa-bolt"></i>
+
+            </button>
+
+            <p id="setupError" class="setup-error"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PANTALLA DE JUEGO
+    ====================================== -->
+
+    <section id="gameScreen" class="contest-screen">
+
+        <!-- MARCADOR -->
+
+        <div class="scoreboard">
+
+            <div class="score-player player1-score">
+
+                <div class="score-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="score-info">
+                    <span id="scoreName1">Jugador 1</span>
+                    <strong id="score1">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="score-center">
+
+                <span class="score-label">
+                    CONCURSO
+                </span>
+
+                <div class="score-vs">
+                    <span>VS</span>
+                </div>
+
+                <small id="questionCounter">
+                    1 / 20
+                </small>
+
+            </div>
+
+
+            <div class="score-player player2-score">
+
+                <div class="score-info">
+                    <span id="scoreName2">Jugador 2</span>
+                    <strong id="score2">0</strong>
+                </div>
+
+                <div class="score-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TURNO -->
+
+        <div class="turn-indicator">
+
+            <span class="turn-dot"></span>
+
+            <span>
+                TURNO DE
+            </span>
+
+            <strong id="currentPlayerName">
+                JUGADOR 1
+            </strong>
+
+        </div>
+
+
+        <!-- RONDA -->
+
+        <div class="round-header">
+
+            <span id="roundNumber">
+                RONDA 1
+            </span>
+
+            <h2 id="roundTitle">
+                DEMUESTRA LO QUE SABES
+            </h2>
+
+            <p id="roundDescription">
+                Selecciona la respuesta correcta.
+            </p>
+
+        </div>
+
+
+        <!-- PREGUNTA -->
+
+        <div id="questionArea" class="question-area">
+
+            <!-- JS INSERTA AQUÍ -->
+
+        </div>
+
+
+        <!-- FEEDBACK -->
+
+        <div id="feedback" class="feedback"></div>
+
+    </section>
+
+
+    <!-- =====================================
+         PANTALLA FINAL
+    ====================================== -->
+
+    <section id="resultScreen" class="contest-screen">
+
+        <div class="result-card">
+
+            <div class="result-icon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span class="eyebrow">
+                CONCURSO TERMINADO
+            </span>
+
+            <h1>
+                RESULTADOS
+            </h1>
+
+            <p class="result-subtitle">
+                Así terminó el desafío.
+            </p>
+
+
+            <!-- RESULTADO JUGADORES -->
+
+            <div class="final-scoreboard">
+
+                <div class="final-player final-player-one">
+
+                    <span class="final-position">
+                        JUGADOR 1
+                    </span>
+
+                    <h2 id="finalName1">
+                        Jugador 1
+                    </h2>
+
+                    <strong id="finalScore1">
+                        0
+                    </strong>
+
+                    <small>
+                        PUNTOS
+                    </small>
+
+                </div>
+
+
+                <div class="final-vs">
+                    VS
+                </div>
+
+
+                <div class="final-player final-player-two">
+
+                    <span class="final-position">
+                        JUGADOR 2
+                    </span>
+
+                    <h2 id="finalName2">
+                        Jugador 2
+                    </h2>
+
+                    <strong id="finalScore2">
+                        0
+                    </strong>
+
+                    <small>
+                        PUNTOS
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAJE -->
+
+            <div id="winnerMessage" class="winner-message">
+                ¡Excelente concurso!
+            </div>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="stats-title">
+                ESTADÍSTICAS
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-box">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <strong id="correct1">0</strong>
+                    <span id="statName1">Jugador 1</span>
+                </div>
+
+                <div class="stat-box">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <strong id="correct2">0</strong>
+                    <span id="statName2">Jugador 2</span>
+                </div>
+
+                <div class="stat-box">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <strong>5</strong>
+                    <span>Rondas</span>
+                </div>
+
+                <div class="stat-box">
+                    <i class="fa-solid fa-question"></i>
+                    <strong>20</strong>
+                    <span>Preguntas</span>
+                </div>
+
+            </div>
+
+
+            <div class="result-buttons">
+
+                <button id="restartContest" class="result-button primary">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    Jugar otra vez
+                </button>
+
+                <a href="juego.html" class="result-button secondary">
+                    <i class="fa-solid fa-house"></i>
+                    Volver al museo
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================
+     AUDIO
+========================================= -->
+
+<audio id="backgroundMusic" loop>
+    <source src="../audio/contest.mp3" type="audio/mpeg">
+</audio>
+
+
+<script src="../js/concurso.js"></script>
+
+</body>
+</html>
